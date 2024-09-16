@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chaos Simulation</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Add grid layout for 2x2 simulation display */
+      #simulations {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        grid-template-rows: auto auto; /* Two rows */
+        gap: 20px; /* Space between grid items */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .simulation-container {
+        display: flex;
+        flex-direction: column; /* Stack simulation and button vertically */
+        align-items: center;
+      }
+
+      .simulation {
+        width: 100%;
+        height: 400px;
+      }
+
+      .reset-button {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="simulations">
+      <div class="simulation-container">
+        <div id="simulation1" class="simulation"></div>
+        <button id="reset1" class="reset-button">Reset Simulation 1</button>
+      </div>
+      <div class="simulation-container">
+        <div id="simulation2" class="simulation"></div>
+        <button id="reset2" class="reset-button">Reset Simulation 2</button>
+      </div>
+      <div class="simulation-container">
+        <div id="simulation3" class="simulation"></div>
+        <button id="reset3" class="reset-button">Reset Simulation 3</button>
+      </div>
+      <div class="simulation-container">
+        <div id="simulation4" class="simulation"></div>
+        <button id="reset4" class="reset-button">Reset Simulation 4</button>
+      </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
