@@ -7,7 +7,7 @@ const simulations = [
   createSimulation('simulation3', 15),
   createSimulation('simulation4', 15),
 ];
-
+//test
 // Add event listeners for reset buttons
 document.getElementById('reset1').addEventListener('click', () => simulations[0].reset());
 document.getElementById('reset2').addEventListener('click', () => simulations[1].reset());
