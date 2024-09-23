@@ -1,63 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chaos Simulation</title>
-    <link rel="stylesheet" href="style.css" />
-    <style>
-      /* Add grid layout for 2x2 simulation display */
-      #simulations {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Two columns */
-        grid-template-rows: auto auto; /* Two rows */
-        gap: 20px; /* Space between grid items */
-        padding: 20px;
-        box-sizing: border-box;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chaos Simulation</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Add grid layout for 2x2 simulation display */
+    #simulations {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Two columns */
+      grid-template-rows: auto auto; /* Two rows */
+      gap: 20px; /* Space between grid items */
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
-      .simulation-container {
-        display: flex;
-        flex-direction: column; /* Stack simulation and button vertically */
-        align-items: center;
-      }
+    .simulation-container {
+      display: flex;
+      flex-direction: column; /* Stack simulation and button vertically */
+      align-items: center;
+    }
+    .simulation-container-lorenz {
+      display: flex;
+      flex-direction: column; /* Stack simulation and button vertically */
+      align-items: center;
+    }
+    .simulation {
+      width: 400px;
+      height: 400px;
+    }
 
-      .simulation {
-        width: 100%;
-        height: 400px;
-      }
-
-      .reset-button {
-        margin-top: 10px;
-        padding: 10px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="simulations">
-      <div class="simulation-container">
-        <div id="simulation1" class="simulation"></div>
-        <button id="reset1" class="reset-button">Reset Simulation 1</button>
-      </div>
-      <div class="simulation-container">
-        <div id="simulation2" class="simulation"></div>
-        <button id="reset2" class="reset-button">Reset Simulation 2</button>
-      </div>
-      <div class="simulation-container">
-        <div id="simulation3" class="simulation"></div>
-        <button id="reset3" class="reset-button">Reset Simulation 3</button>
-      </div>
-      <div class="simulation-container">
-        <div id="simulation4" class="simulation"></div>
-        <button id="reset4" class="reset-button">Reset Simulation 4</button>
-      </div>
+    .reset-button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+ 
+  <div id="simulations">
+    <div class="simulation-container">
+      <div id="simulation1" class="simulation"></div>
+      <button id="reset1" class="reset-button">Reset Simulation 1</button>
     </div>
-
-    <script type="module" src="./main.js"></script>
-  </body>
+    <div class="simulation-container">
+      <div id="simulation2" class="simulation"></div>
+      <button id="reset2" class="reset-button">Reset Simulation 2</button>
+    </div>
+    <div class="simulation-container">
+      <div id="simulation3" class="simulation"></div>
+      <button id="reset3" class="reset-button">Reset Simulation 3</button>
+    </div>
+    <div class="simulation-container">
+      <div id="simulation4" class="simulation"></div>
+      <button id="reset4" class="reset-button">Reset Simulation 4</button>
+    </div>
+  </div>
+   
+  <div id="simulations">
+    
+    <div class="simulation-container-lorenz">
+      <div id="lorenzAttractor1" class="simulation"></div>
+      <div>initial position offset by x: 0.1, y: 0, z: 0 </div>
+    </div>
+    <div class="simulation-container-lorenz">
+      <div id="lorenzAttractor2" class="simulation"></div>
+      <div>initial position offset by x: 1.0, y: 0.5, z: 0.5 </div>
+    </div>
+    <div class="simulation-container-lorenz">
+      <div id="lorenzAttractor3" class="simulation"></div>
+      <div>initial position offset by x: -0.5, y: 1.5, z: -1.0 </div>
+    </div>
+    <div class="simulation-container-lorenz">
+      <div id="lorenzAttractor4" class="simulation"></div>
+      <div>initial position offset by x: 2.0, y: -1.0, z: 1.0 </div>
+    </div>
+    
+  </div>
+  
+  <div id="simulations">
+    <canvas id="myCanvas" style="display: block; margin-top: 100px;margin-left: auto;margin-right: auto;">
+    </canvas>
+    <p style="text-align: center;">
+      <em>Double click on a specific point in the image to zoom in</em>
+    </p>
+    
+  </div>
+  <script type="module" src="./main.js"></script>
+</body>
 </html>

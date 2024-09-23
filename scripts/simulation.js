@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
+
 // Constants for simulation
 const G = 1; // Gravitational constant
 const dt = 0.01; // Time step
@@ -80,6 +81,7 @@ class Body {
   }
 }
 
+  
 function createSimulation(containerId, numBodies) {
   // Generate random bodies
   const bodies = [];
@@ -88,20 +90,21 @@ function createSimulation(containerId, numBodies) {
   const masses = [];
   const colors = [];
 
+  const multiplikator = 2;
+
+
   for (let i = 0; i < numBodies; i++) {
     // Generate random initial conditions for each body
     const position = new THREE.Vector3(
-      Math.random() * 4 - 2,
-      Math.random() * 4 - 2,
-      Math.random() * 4 - 2
+      Math.sin(i*multiplikator),Math.sin(i*multiplikator),Math.sin(i*multiplikator)
     );
     const velocity = new THREE.Vector3(
       Math.random() * 0.2 - 0.1,
       Math.random() * 0.2 - 0.1,
       Math.random() * 0.2 - 0.1
     );
-    const mass = Math.random() * 2 + 0.5;
-    const color = Math.random() * 0xffffff;
+    const mass = 1;
+    const color = (i+1) * 0xfffff;
 
     positions.push(position);
     velocities.push(velocity);
@@ -126,7 +129,7 @@ function createSimulation(containerId, numBodies) {
       body1.velocity = initialVelocity;
     }
   }
-
+    
   // Function to compute gravitational forces
   function computeGravitationalForce(body1, body2) {
     const distanceVec = body2.position.clone().sub(body1.position);
@@ -162,7 +165,7 @@ function createSimulation(containerId, numBodies) {
   renderer.setSize(container.clientWidth, container.clientHeight);
   container.appendChild(renderer.domElement);
 
-  camera.position.set(2, 2, 2);
+  camera.position.set(0, 5, -3);
   
   // Orbit controls for each simulation
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -172,15 +175,17 @@ function createSimulation(containerId, numBodies) {
   // Create meshes for each body
   bodies.forEach((body, index) => {
     const geometry = new THREE.SphereGeometry(0.1, 32, 32);
-    const material = new THREE.MeshBasicMaterial({ color: body.color });
+    const material = new THREE.MeshStandardMaterial({ color: body.color,side: THREE.DoubleSide, });
     const sphere = new THREE.Mesh(geometry, material);
     scene.add(sphere);
     body.mesh = sphere;
     scene.add(body.trailLine);
   });
 
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-  scene.add(ambientLight);
+  const light = new THREE.HemisphereLight( 0xffffbb, 0x080820, 1 );
+  scene.add( light );
+  //const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  //scene.add(ambientLight);
 
   function animate() {
     requestAnimationFrame(animate);
@@ -203,5 +208,6 @@ function createSimulation(containerId, numBodies) {
     renderer.setSize(container.clientWidth, container.clientHeight);
   });
 }
+ 
 
 export { createSimulation };
